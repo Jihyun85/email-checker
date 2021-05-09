@@ -33,7 +33,12 @@ export function emailChecker(state = initialState, action) {
     case FORM_SUBMIT:
       return {
         ...state,
-        result: action.payload.data,
+        result: { ...action.payload.data, id: action.payload.id },
+        list: [
+          ...state.list,
+          { ...action.payload.data, id: action.payload.id },
+        ],
+        value: "",
       };
     case FORM_RESET:
       return {
