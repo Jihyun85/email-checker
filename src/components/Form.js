@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ value, onChange, onSubmit }) {
+function Form({ value, onChange, onSubmit, onReset }) {
   return (
     <form onSubmit={onSubmit}>
       <input
@@ -9,7 +9,9 @@ function Form({ value, onChange, onSubmit }) {
         value={value}
         onChange={onChange}
       />
-      <button type="button">초기화</button>
+      <button type="button" onClick={onReset}>
+        초기화
+      </button>
       <button type="submit">제출</button>
     </form>
   );

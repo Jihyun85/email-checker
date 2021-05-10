@@ -4,7 +4,7 @@ import { emailApi } from "../api";
 import Form from "../components/Form";
 import List from "../components/List";
 import Result from "../components/Result";
-import { formChange, formSubmit } from "../modules/emailChecker";
+import { formChange, formReset, formSubmit } from "../modules/emailChecker";
 
 function EmailContainer() {
   const { value } = useSelector((state) => ({
@@ -12,20 +12,29 @@ function EmailContainer() {
   }));
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
+  const changeInput = (e) => {
     const { value } = e.target;
     dispatch(formChange(value));
   };
 
-  const handleSubmit = async (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     const { data } = await emailApi(value);
     dispatch(formSubmit(data));
   };
 
+  const resetInput = () => {
+    dispatch(formReset());
+  };
+
   return (
     <div>
-      <Form value={value} onChange={handleChange} onSubmit={handleSubmit} />
+      <Form
+        value={value}
+        onChange={changeInput}
+        onSubmit={submitForm}
+        onReset={resetInput}
+      />
       <Result />
       <List />
     </div>
