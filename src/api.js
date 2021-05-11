@@ -1,12 +1,14 @@
 import axios from "axios";
 
-const baseUrl = "https://emailvalidation.abstractapi.com/v1/?";
-const api_key = "";
+const baseUrl = "http://apilayer.net/api/check";
+const access_key = "";
 
 export const emailApi = (email) =>
   axios.get(baseUrl, {
     params: {
-      api_key: api_key,
+      access_key: access_key,
       email,
+      format: 1,
+      smtp: 1,
     },
   });
