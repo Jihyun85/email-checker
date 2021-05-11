@@ -4,11 +4,18 @@ import { emailApi } from "../api";
 import Form from "../components/Form";
 import List from "../components/List";
 import Result from "../components/Result";
-import { formChange, formReset, formSubmit } from "../modules/emailChecker";
+import {
+  formChange,
+  formReset,
+  formSubmit,
+  listDelete,
+} from "../modules/emailChecker";
 
 function EmailContainer() {
-  const { value } = useSelector((state) => ({
+  const { value, result, list } = useSelector((state) => ({
     value: state.emailChecker.value,
+    result: state.emailChecker.result,
+    list: state.emailChecker.list,
   }));
   const dispatch = useDispatch();
 
@@ -27,6 +34,10 @@ function EmailContainer() {
     dispatch(formReset());
   };
 
+  const deleteList = (id) => {
+    dispatch(listDelete(id));
+  };
+
   return (
     <div>
       <Form
@@ -36,7 +47,7 @@ function EmailContainer() {
         onReset={resetInput}
       />
       <Result />
-      <List />
+      <List list={list} deleteList={deleteList} />
     </div>
   );
 }
