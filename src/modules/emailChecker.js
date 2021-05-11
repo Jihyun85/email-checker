@@ -53,7 +53,7 @@ export function emailChecker(state = initialState, action) {
     case LIST_DELETE:
       return {
         ...state,
-        list: state.list.map((item) => item.id !== action.payload.id),
+        list: state.list.filter((item) => item.id !== action.payload.id),
       };
     case LIST_RESET:
       return {
