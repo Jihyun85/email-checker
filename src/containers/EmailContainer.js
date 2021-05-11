@@ -46,7 +46,7 @@ function EmailContainer() {
         onSubmit={submitForm}
         onReset={resetInput}
       />
-      <Result />
+      <Result result={result} />
       <List list={list} deleteList={deleteList} />
     </div>
   );
