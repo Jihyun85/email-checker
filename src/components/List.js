@@ -2,18 +2,22 @@ import React from "react";
 import ListItem from "./ListItem";
 
 function List({ list, deleteList }) {
-  return (
-    <div>
-      {list.map((item) => (
-        <ListItem
-          key={item.id}
-          id={item.id}
-          email={item.email}
-          deleteList={deleteList}
-        />
-      ))}
-    </div>
-  );
+  if (list.length > 0) {
+    return (
+      <section className="list">
+        <h2>확인 리스트</h2>
+        {list.map((item) => (
+          <ListItem
+            key={item.id}
+            id={item.id}
+            item={item}
+            deleteList={deleteList}
+          />
+        ))}
+      </section>
+    );
+  }
+  return <></>;
 }
 
 export default List;
