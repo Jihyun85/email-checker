@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Subtitle } from "../styles/components/Subtitle";
 import ListItem from "./ListItem";
+import xlsx from "xlsx";
 import { SmallGreenBtn } from "../styles/components/Button";
 
 const ListSection = styled.section`
@@ -15,11 +16,21 @@ const XlsxBtn = styled(SmallGreenBtn)`
 `;
 
 function List({ list, deleteList }) {
+  const wb = xlsx.utils.book_new();
+  const ws = xlsx.utils.json_to_sheet(list);
+
+  xlsx.utils.book_append_sheet(wb, ws, "Sheet1");
+
   if (list.length > 0) {
     return (
       <ListSection className="list">
         <Subtitle>확인 리스트</Subtitle>
-        <XlsxBtn type="button">xlsx로 다운로드</XlsxBtn>
+        <XlsxBtn
+          type="button"
+          onClick={() => xlsx.writeFile(wb, "email-validation.xlsx")}
+        >
+          xlsx로 다운로드
+        </XlsxBtn>
         {list.map((item) => (
           <ListItem
             key={item.id}
