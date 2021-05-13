@@ -13,11 +13,11 @@ const HeaderTitle = styled.h1`
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.fontSizes.smTitle};
 
-  ${customMedia.greaterThan("smBreakpoint")`
+  ${customMedia.greaterThan("mdBreakpoint")`
     font-size: ${({ theme }) => theme.fontSizes.mdTitle};
   `}
 
-  ${customMedia.greaterThan("mdBreakpoint")`
+  ${customMedia.greaterThan("lgBreakpoint")`
     font-size: ${({ theme }) => theme.fontSizes.lgTitle};
   `}
 `;
