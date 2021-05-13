@@ -1,4 +1,5 @@
 const fontSizes = {
+  xs: "12px",
   sm: "14px",
   md: "16px",
   lg: "18px",
@@ -14,6 +15,7 @@ const colors = {
   lightGray: "#F5F5F5",
   hoverGray: "#ebebeb",
   darkGray: "#808080",
+  green: "#1E6F43",
 };
 
 const event = {
